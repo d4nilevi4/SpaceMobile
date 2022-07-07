@@ -6,10 +6,10 @@ namespace SpaceMobile
     {
         [SerializeField] protected float startDelay;
         [SerializeField] protected float spawnDelay;
+        [SerializeField] protected float scatterInX = 2.5f;
 
         protected float startTimer;
         protected float timeAfterLastSpawn;
-        protected float scatterInX = 2.5f;
 
         private void OnEnable()
         {

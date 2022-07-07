@@ -6,6 +6,7 @@ namespace SpaceMobile
     {
         [SerializeField] private Camera _camera;
         [SerializeField] private Vector3 _abilityPosition;
+        [SerializeField] private float _abilityScaleMultiplier;
          
         private WarShip _player;
 
@@ -26,6 +27,7 @@ namespace SpaceMobile
         private void ReplaceAbility(CollectableAbility ability)
         {
             ability.transform.parent = _camera.transform;
+            ability.transform.localScale = Vector3.one * _abilityScaleMultiplier;
             ability.transform.localPosition = _abilityPosition;
         }
     }    

@@ -1,6 +1,6 @@
 namespace SpaceMobile
 {
-    public class Butterfly : EnemyBoss, IDamageable
+    public class Beetle : EnemyBoss, IDamageable
     {
         public float Health { get; set; }
 
