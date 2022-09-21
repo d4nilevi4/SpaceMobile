@@ -7,10 +7,14 @@ namespace SpaceMobile
     public class WarShip : MonoBehaviour, IDamageable
     {
         [SerializeField] private AudioManager _audioManager;
+        [SerializeField] private SpriteRenderer _sprite;
+        [SerializeField] private CircleCollider2D _colider;
 
         [Header("Health")]
+        [SerializeField] private int _lifeCount;
         [SerializeField] private float _maxHealth;
         [SerializeField] private HealthBar _healthBar;
+        [SerializeField] private LifeBar _lifeBar;
 
         [Header("Fire")]
         [SerializeField] private Transform[] _shotSapwnPoints;
@@ -62,10 +66,22 @@ namespace SpaceMobile
             Health -= damageValue;
             if (Health <= 0)
             {
-                PlayerDie?.Invoke();
-                Destroy(gameObject);
+                if (_lifeCount <= 1)
+                {
+                    _lifeBar.DecreaseLife();
+                    PlayerDie?.Invoke();
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    _lifeCount--;
+                    _lifeBar.DecreaseLife();
+                    Health = _maxHealth;
+                    DecreaseShotsCount();
+                    StartCoroutine(ImageFlicker());
+                    transform.position = new Vector3(0, -4.5f, 0);
+                }        
             }
-            DecreaseShotsCount();
             _healthBar.SetHealth(Health);
         }
 
@@ -95,6 +111,19 @@ namespace SpaceMobile
                 return;
 
             _shotsCount -= 2;
+        }
+
+        private IEnumerator ImageFlicker()
+        {
+            _colider.enabled = false;
+            for (int i = 0; i < 5; i++)
+            {
+                _sprite.color = new Color(255, 255, 255, 0);
+                yield return new WaitForSeconds(0.25f);
+                _sprite.color = new Color(255, 255, 255, 255);
+                yield return new WaitForSeconds(0.25f);
+            }
+            _colider.enabled = true;
         }
     }
 }

@@ -130,11 +130,12 @@
     <Compile Include="Assets\Scripts\Enemy\EnemyShip\EnemyWhithLaser.cs" />
     <Compile Include="Assets\Scripts\UI\GameOverMenu.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyBoss\Beetle\Beetle.cs" />
+    <Compile Include="Assets\Scripts\Background\GalaxySpawner.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyBoss\Boss State Machine\Transition.cs" />
     <Compile Include="Assets\Scripts\Mover.cs" />
     <Compile Include="Assets\Scripts\Spawners\EnemySpawner.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyBoss\Boss State Machine\Beetle\Transitions\BeetleLasersTransition.cs" />
-    <Compile Include="Assets\Scripts\Background\GalaxySpawner.cs" />
+    <Compile Include="Assets\Scripts\UI\LifeBar.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
